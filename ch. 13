@@ -1,0 +1,121 @@
+def create_language():
+	t = []
+	fin = open('words.txt')
+	for line in fin:
+		word = line.strip()
+		t.append(word)
+
+# Exercise 1
+
+import string
+excl = string.punctuation + string.whitespace
+# print excl
+
+def word_histogram(t):
+	d = dict()
+	for word in t:
+		word = word.lower()
+		d[word] = d.get(word, 0) + 1
+	return d
+
+def create_word_list(s):
+	res = []
+	t = []
+	t = s.split()
+	# print t
+
+	for word in t:
+		temp = word.strip(excl)
+		res.append(temp)
+
+	d = word_histogram(res)
+	return d 
+
+# Exercise 2
+
+def unique_word_count(s):
+	# count = 0
+	d = create_word_list(s)
+	# print d
+	# for key, value in d.items():
+	# 	count += 1
+	# print count
+	# return count
+	print len(d)
+	return len (d) # much simpler than creating for loop accumulator
+
+# unique_word_count("testing with multiple words words words.  And$$$ with punctuation")
+
+
+# Exercise 3
+
+def most_common_words(s, n=5):
+	"""n is the number of most common words to return"""
+	res = []
+	t = []
+	d = create_word_list(s)
+	print d
+	for key, value in d.items():
+		t.append((value, key))
+	t.sort(reverse = True)
+	
+	for freq, word in t:
+		res.append(word)
+
+	print res[:n]
+	return res[:n]
+
+# most_common_words("testing with multiple words words words.  And$$$ with punctuation", 2)
+
+
+# Exercise 5
+
+import random
+
+def histogram(t):
+	d = dict()
+	for c in t:
+		c = c.lower()
+		d[c] = d.get(c, 0) + 1
+	return d
+
+def choose_from_hist():
+	res = []
+	t = ['a', 'a', 'b']
+	hist = histogram(t)
+	# print hist
+	for word, freq in hist.items():
+		temp = [word] * freq
+		res.extend(temp)
+	# print res 
+
+	return random.choice(res)
+
+
+# choose_from_hist()
+
+
+# Exercise 8
+
+def markov_analysis(s):
+	d = dict()
+	t = create_markov_list(s)
+	for i in t:
+		if d`(i)
+		d(i) = d()
+
+def create_markov_list(s):
+	res = []
+	t = []
+	t = s.split()
+	# print t
+
+	for word in t:
+		temp = word.strip(excl)
+		res.append(temp)
+	# print res
+	return res
+
+create_markov_list("Add a function to the previous program to generate random text based on the Markov analysis.")
+
+# markov_analysis("Write a program to read a text from a file and perform Markov analysis. The result should be a dictionary that maps from prefixes to a collection of possible suffixes. The collection might be a list, tuple, or dictionary; it is up to you to make an appropriate choice. You can test your program with prefix length two, but you should write the program in a way that makes it easy to try other lengths.")
