@@ -1,0 +1,27 @@
+# Exercise 1
+
+import string
+excl = string.punctuation + string.whitespace
+print excl
+
+def exercise_1(s):
+	t = []
+	t = s.split()
+	print t
+
+	for n, i in enumerate(t):
+		for j in range (1,len(i)):
+			if i[-j] in excl:
+				i = i[:-j]
+			else:
+				t[n] = i
+
+	print t
+
+
+	# d = dict()
+	# print d
+
+# Edge cases -1. String starts with punctuation, 2. Punctuation without white space (error)
+
+exercise_1("testing with multiple words.  And$$$ punctuation")
